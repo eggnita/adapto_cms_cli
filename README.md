@@ -64,6 +64,7 @@ adapto articles create \
 ```
 adapto
 ├── version                          Print CLI version
+├── llm-info                         Full CLI reference for LLM agents
 ├── auth
 │   ├── login                        Login with email/password
 │   ├── register                     Register new account
@@ -77,7 +78,9 @@ adapto
 │   ├── resend-activation            Resend activation email
 │   ├── login-github                 GitHub OAuth
 │   ├── callback-github              GitHub OAuth callback
-│   └── login-google                 Google OAuth
+│   ├── login-google                 Google OAuth
+│   ├── switch-tenant                Switch active tenant
+│   └── orgs                         List organizations/tenants
 ├── articles
 │   ├── list                         List articles
 │   ├── create                       Create article
@@ -145,6 +148,35 @@ make test
 # Regenerate API client from OpenAPI spec
 make generate
 ```
+
+## Releasing
+
+The release workflow is automated via GitHub Actions. When a `v*` tag is pushed, binaries are built for all platforms and published to [GitHub Releases](https://github.com/eggnita/adapto_cms_cli/releases).
+
+Use `make release` to bump the version, create the tag, and push:
+
+```bash
+make release              # patch bump (v0.1.0 → v0.1.1)
+make release BUMP=minor   # minor bump (v0.1.1 → v0.2.0)
+make release BUMP=major   # major bump (v0.2.0 → v1.0.0)
+```
+
+This creates the git tag and pushes it, which triggers the CI to build and publish:
+- `adapto-linux-amd64`
+- `adapto-linux-arm64`
+- `adapto-darwin-amd64`
+- `adapto-darwin-arm64`
+- `adapto-windows-amd64.exe`
+
+## LLM Integration
+
+To give an LLM agent full knowledge of the CLI (for MCP/tool-use scenarios):
+
+```bash
+adapto llm-info
+```
+
+This prints a comprehensive markdown reference of every command, flag, and workflow.
 
 ## License
 
