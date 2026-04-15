@@ -1,7 +1,9 @@
 name: Auto Release
 
 on:
-  push:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
     branches: [main]
 
 permissions:
@@ -10,8 +12,7 @@ permissions:
 jobs:
   auto-release:
     runs-on: ubuntu-latest
-    # Skip if the commit was a tag push or came from the release workflow
-    if: "!startsWith(github.event.head_commit.message, 'chore: release')"
+    if: github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
         with:
