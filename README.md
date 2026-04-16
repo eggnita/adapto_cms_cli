@@ -7,18 +7,18 @@ Command-line interface for the [Adapto CMS](https://adaptocms.com) management AP
 ### Quick install (macOS/Linux)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/eggnita/adapto_cms_cli/main/scripts/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/adaptocms/adapto-cms-cli/main/scripts/install.sh | bash
 ```
 
 ### From source
 
 ```bash
-go install github.com/eggnita/adapto_cms_cli@latest
+go install github.com/adaptocms/adapto-cms-cli@latest
 ```
 
 ### From releases
 
-Download the binary for your platform from [GitHub Releases](https://github.com/eggnita/adapto_cms_cli/releases).
+Download the binary for your platform from [GitHub Releases](https://github.com/adaptocms/adapto-cms-cli/releases).
 
 ## Configuration
 
@@ -199,7 +199,7 @@ make release BUMP=minor   # minor bump (v0.1.1 → v0.2.0)
 make release BUMP=major   # major bump (v0.2.0 → v1.0.0)
 ```
 
-Releases are built for all platforms and published to [GitHub Releases](https://github.com/eggnita/adapto_cms_cli/releases):
+Releases are built for all platforms and published to [GitHub Releases](https://github.com/adaptocms/adapto-cms-cli/releases):
 - `adapto-linux-amd64`
 - `adapto-linux-arm64`
 - `adapto-darwin-amd64`
